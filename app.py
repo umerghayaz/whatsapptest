@@ -93,7 +93,7 @@ def display_image(filename):
 def create_pet():
     pet_data = request.json
 
-    name = pet_data['pet_name']
+    name = pet_data['name']
     print(name)
 
 
