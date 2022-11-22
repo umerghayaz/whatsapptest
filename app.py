@@ -3,7 +3,9 @@ import os
 # import mongoengine
 
 import urllib.request
-from flask import Flask, flash, request, redirect, url_for, render_template
+
+# import cors as cors
+from flask import Flask, flash, request, redirect, url_for, render_template, jsonify
 from werkzeug.utils import secure_filename
 from heyoo import WhatsApp
 from flask import Flask
@@ -39,7 +41,8 @@ def upload_form():
 # class User(db.Document):
 #     profile_pic = db.StringField()
 
-
+from flask_cors import CORS, cross_origin
+CORS(app)
 @app.route('/', methods=['POST'])
 def upload_image():
     if 'file' not in request.files:
@@ -85,5 +88,15 @@ def display_image(filename):
 	return redirect(url_for('static', filename='uploads/' + filename), code=301)
 
 
+@cross_origin()
+@app.route('/pets', methods=['POST'])
+def create_pet():
+    pet_data = request.json
+
+    name = pet_data['pet_name']
+    print(name)
+
+
+    return jsonify({"success": True, "response": "Pet added"})
 if __name__ == "__main__":
     app.run(port=9900, debug=True)
