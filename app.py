@@ -10,7 +10,7 @@ from flask import Flask
 # from flask_mongoengine import MongoEngine #ModuleNotFoundError: No module named 'flask_mongoengine' = (venv) C:\flaskmyproject>pip install flask-mongoengine
 from os import environ
 
-UPLOAD_FOLDER = 'static/uploads/'
+UPLOAD_FOLDER = 'static/images/'
 
 app = Flask(__name__)
 app.secret_key = "umer"
@@ -58,7 +58,7 @@ def upload_image():
         print('upload_image filename: ' + filename)
         flash('Image successfully uploaded and displayed below')
         o=url_for('static', filename='uploads/' + filename)
-        l = 'https://myupla.herokuapp.com'+url_for('static', filename='uploads/' + filename)
+        l = 'https://myupla.herokuapp.com'+url_for('static', filename='images/' + filename)
         messenger = WhatsApp(environ.get("TOKEN"), phone_number_id=environ.get("PHONE_NUMBER_ID")) #this should be writen as
 
         # For sending  images
@@ -74,7 +74,7 @@ def upload_image():
         print(response)
         print('url is',l)
 
-        return redirect(url_for('static', filename='uploads/' + filename), code=301)
+        return redirect(url_for('static', filename='images/' + filename), code=301)
     else:
         flash('Allowed image types are -> png, jpg, jpeg, gif')
         return redirect(request.url)
@@ -86,4 +86,4 @@ def display_image(filename):
 
 
 if __name__ == "__main__":
-    app.run(port=9000, debug=True)
+    app.run(port=9900, debug=True)
