@@ -107,7 +107,7 @@ def create_pet():
 
     return jsonify({"success": True, "response": "Pet added"})
 @app.route('/sendimage', methods=['POST'])
-def upload_image():
+def upload_image1():
     if 'file' not in request.files:
         flash('No file part')
         return redirect(request.url)
