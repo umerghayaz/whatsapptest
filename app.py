@@ -270,7 +270,7 @@ def upload_image4():
 
     return jsonify({"success": True, "response": "Pet added"})
 @app.route('/sendvideo', methods=['POST'])
-def upload_image4():
+def upload_image5():
     if 'file' not in request.files:
         flash('No file part')
         return redirect(request.url)
