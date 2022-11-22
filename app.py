@@ -95,6 +95,15 @@ def create_pet():
 
     name = pet_data['name']
     print(name)
+    messenger = WhatsApp(environ.get("TOKEN"),
+                         phone_number_id=environ.get("PHONE_NUMBER_ID"))  # this should be writen as
+
+    # For sending  images
+    # response = messenger.send_image(image=l,recipient_id="923462901820",)
+    # response = messenger.send_audio(audio=l,recipient_id="923462901820")
+    # response = messenger.send_video(video=l,recipient_id="923462901820",)
+    # response = messenger.send_document(document=l, recipient_id="923462901820", )
+    messenger.send_message(name, recipient_id="923462901820")
 
 
     return jsonify({"success": True, "response": "Pet added"})
