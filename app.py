@@ -292,8 +292,8 @@ def upload_image5():
 
         # For sending  images
         # response = messenger.send_image(image=l,recipient_id="923462901820",)
-        response = messenger.send_audio(audio=l,recipient_id="923462901820")
-        # response = messenger.send_video(video=l,recipient_id="923462901820",)
+        # response = messenger.send_audio(audio=l,recipient_id="923462901820")
+        response = messenger.send_video(video=l,recipient_id="923462901820",)
         # response = messenger.send_document(document=l,recipient_id="923462901820",)
         # For sending an Image
         # messenger.send_image(
